@@ -1,3 +1,9 @@
+build/
+compile_commands.json
+results/
+test/output/
+.cache
+
 # Prerequisites
 *.d
 
@@ -30,3 +36,6 @@
 *.exe
 *.out
 *.app
+
+__pycache__
+
