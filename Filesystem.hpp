@@ -5,6 +5,11 @@
 #include <boost/filesystem/fstream.hpp>
 #include <vector>
 
+// For fmt support
+#include <fmt/format.h>
+#include <sstream>
+#include <iomanip>
+
 namespace openstudio {
 typedef boost::filesystem::path path;
 
@@ -53,5 +58,35 @@ namespace filesystem {
 
 }  // namespace filesystem
 }  // namespace openstudio
+
+namespace fs = openstudio::filesystem;
+
+// Add a custom formatter for fmt
+template <> struct fmt::formatter<fs::path>: fmt::formatter<string_view> {
+  // parse is inherited from formatter<string_view>.
+  template <typename FormatContext>
+  auto format(const fs::path& p, FormatContext& ctx) {
+    std::stringstream ss;
+    ss << std::quoted(p.string());
+
+    // Note: std::quoted does this
+
+    /*
+    constexpr char delim = '"';
+    constexpr char escape = '\\';
+    ss << delim;
+    for (auto c: p.string()) {
+        if (c == delim || c == escape) {
+            ss << escape;
+        }
+        ss << c;
+    }
+    ss << delim;
+    */
+
+    return fmt::formatter<string_view>::format(ss.str(), ctx);
+  }
+};
+
 
 #endif
