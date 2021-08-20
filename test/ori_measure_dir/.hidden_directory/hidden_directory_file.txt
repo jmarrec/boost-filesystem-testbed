@@ -1,0 +1,1 @@
+.hidden_directory/hidden_directory_file.txt
