@@ -2,6 +2,7 @@ build/
 compile_commands.json
 results/
 test/output/
+test/my_measure/
 .cache
 
 # Prerequisites

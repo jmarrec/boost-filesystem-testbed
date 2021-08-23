@@ -3,6 +3,7 @@
 #include <sstream>
 #include <codecvt>
 #include <iomanip>
+#include <cmath>
 
 namespace openstudio {
 

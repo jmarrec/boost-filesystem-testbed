@@ -14,7 +14,7 @@
 namespace fs = openstudio::filesystem;
 
 // @param ignoredPaths: a list of subfolders to ignore
-bool copyDir(fs::path const& source, fs::path const& destination, const std::vector<fs::path>& ignoredPaths = std::vector<fs::path>()) {
+bool copyDir(fs::path const& source, fs::path const& destination, [[maybe_unused]] const std::vector<fs::path>& ignoredPaths = std::vector<fs::path>()) {
   try {
     // Check whether the function call is valid
     if (!fs::exists(source) || !fs::is_directory(source)) {
